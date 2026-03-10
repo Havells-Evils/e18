@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 999 Dining Club · luxury fixed price</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            background-color: #0b0b0b;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* luxury palette – deep noir & warm gold, white accents */
+        :root {
+            --deep: #0a0a0a;
+            --charcoal: #151515;
+            --gold: #c9a45b;
+            --old-gold: #b58d4b;
+            --light-gold: #e4c286;
+            --pure-white: #ffffff;
+            --off-white: #f8f6f2;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            color: var(--gold);
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: var(--gold);
+        }
+        .light-title {
+            color: var(--deep);
+        }
+        .light-title:after {
+            background: var(--deep);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* header / nav */
+        .navbar {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+        .logo span {
+            font-weight: 400;
+            color: var(--pure-white);
+            font-size: 1rem;
+            margin-left: 8px;
+            letter-spacing: 3px;
+        }
+        .nav-links a {
+            color: var(--pure-white);
+            margin-left: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 4px;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        /* hero */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(135deg, rgba(10,10,10,0.75), rgba(20,20,20,0.8)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            animation: slowZoom 20s infinite alternate ease-in-out;
+        }
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        .hero-content {
+            max-width: 900px;
+            padding: 20px;
+            z-index: 2;
+        }
+        .hero-content h1 {
+            font-size: 4.2rem;
+            line-height: 1.2;
+            color: var(--pure-white);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+        .hero-content h1 span {
+            color: var(--gold);
+            display: block;
+            font-size: 2.8rem;
+            margin-top: 10px;
+        }
+        .hero-tagline {
+            font-size: 1.6rem;
+            margin: 25px 0 35px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--light-gold);
+        }
+        .btn-group {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 16px 45px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+            display: inline-block;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+        .btn-primary {
+            background: var(--gold);
+            color: var(--deep);
+            border: 2px solid var(--gold);
+        }
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--deep);
+        }
+
+        /* sections alternating */
+        .dark-section {
+            background-color: var(--deep);
+            color: #ddd;
+            padding: 100px 0;
+        }
+        .light-section {
+            background-color: var(--off-white);
+            color: #1a1a1a;
+            padding: 100px 0;
+        }
+
+        /* brand concept extra */
+        .brand-block {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .brand-text p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* journey cards */
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .journey-card {
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            padding: 35px 20px;
+            border: 1px solid rgba(201, 164, 91, 0.2);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .journey-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+        .journey-card i {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .journey-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+            color: var(--light-gold);
+        }
+
+        /* food showcase filter */
+        .filter-tabs {
+            display: flex;
+            gap: 15px;
+            margin: 40px 0 30px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: none;
+            border: 1px solid var(--gold);
+            padding: 8px 25px;
+            font-size: 1rem;
+            color: var(--gold);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gold);
+            color: var(--deep);
+        }
+        .dish-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .dish-card {
+            background: #1e1e1e;
+            border-radius: 0;
+            overflow: hidden;
+            border: 1px solid #2c2c2c;
+            transition: all 0.3s;
+        }
+        .dish-card:hover {
+            border-color: var(--gold);
+            transform: scale(1.02);
+        }
+        .dish-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .dish-info {
+            padding: 20px;
+        }
+        .dish-info h4 {
+            font-size: 1.6rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+        .dish-info p {
+            font-size: 0.95rem;
+            color: #aaa;
+        }
+        .dish-info .ingredients {
+            font-size: 0.85rem;
+            color: var(--light-gold);
+            margin-top: 10px;
+        }
+
+        /* special features grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .feature-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: #1a1a1a;
+            border-bottom: 3px solid var(--gold);
+        }
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .feature-item h4 {
+            font-size: 1.4rem;
+            color: var(--pure-white);
+        }
+
+        /* environment gallery */
+        .env-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .env-item {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        .env-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        .env-item:hover img {
+            transform: scale(1.1);
+        }
+        .env-caption {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            width: 100%;
+            padding: 15px;
+            color: var(--light-gold);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--gold);
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .testimonial-card h4 {
+            color: var(--old-gold);
+        }
+        .testimonial-card span {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* occasion cards */
+        .occasion-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .occasion-card {
+            background: var(--deep);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px solid #3d3d3d;
+        }
+        .occasion-card i {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        /* reservation form */
+        .reservation-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #f0f0f0;
+            padding: 50px;
+            border-radius: 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            background: white;
+            border: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+        .btn-submit {
+            background: var(--old-gold);
+            color: var(--deep);
+            border: none;
+            padding: 16px 40px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .btn-submit:hover {
+            background: var(--gold);
+        }
+
+        /* contact & map */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 1.2rem;
+        }
+        .contact-info i {
+            color: var(--gold);
+            width: 35px;
+        }
+        .map-placeholder {
+            background: #ddd;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-weight: 300;
+            border: 2px solid var(--gold);
+        }
+
+        /* social grid */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .social-item {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 15px;
+            color: white;
+            font-size: 1.5rem;
+            text-shadow: 0 2px 5px black;
+            transition: all 0.3s;
+        }
+        .social-item:hover {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+
+        /* footer */
+        .footer {
+            background: #050505;
+            padding: 60px 0 30px;
+            border-top: 1px solid #2c2c2c;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-logo {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+        .footer-links a, .footer-hours p {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+        .social-icons a {
+            color: var(--gold);
+            margin-right: 20px;
+            font-size: 1.6rem;
+        }
+        .copyright {
+            text-align: center;
+            color: #777;
+            padding-top: 30px;
+            border-top: 1px solid #222;
+        }
+
+        /* responsive */
+        @media (max-width: 1000px) {
+            .journey-grid, .dish-grid, .testimonial-grid, .occasion-grid, .env-gallery, .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 700px) {
+            .journey-grid, .dish-grid, .testimonial-grid, .occasion-grid, .env-gallery, .social-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">999<span>DINING CLUB</span></div>
+        <div class="nav-links">
+            <a href="#journey">Experience</a>
+            <a href="#showcase">Menu</a>
+            <a href="#reserve">Reserve</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO / First impression -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>One Price.<span>Unlimited Satisfaction.</span></h1>
+            <div class="hero-tagline">Welcome to the ₹999 Dining Club</div>
+            <div class="btn-group">
+                <a href="#journey" class="btn btn-primary">Discover the Experience</a>
+                <a href="#reserve" class="btn btn-outline">Reserve Your Table</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand concept / intro -->
+    <div class="dark-section" id="concept">
+        <div class="container brand-block">
+            <div class="brand-text">
+                <h2 class="section-title">Beyond a meal—an invitation</h2>
+                <p>The 999 Dining Club is not just a fixed price; it's a passport to a carefully curated evening. Here, exclusivity meets flavour, and every guest becomes part of a select circle that appreciates thoughtful cuisine without the markup.</p>
+                <p>Step inside and discover why ₹999 is the only number you need to remember for an unforgettable multi‑course journey.</p>
+            </div>
+            <div style="min-width:300px; height:300px; background:url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover; border:3px solid var(--gold);"></div>
+        </div>
+    </div>
+
+    <!-- The ₹999 Dining Journey -->
+    <div class="light-section" id="journey">
+        <div class="container">
+            <h2 class="section-title light-title">The ₹999 Dining Journey</h2>
+            <div class="journey-grid">
+                <div class="journey-card" style="background:#1e1e1e; color:white;">
+                    <i class="fas fa-wine-glass-alt"></i>
+                    <h3>Welcome</h3>
+                    <p>Sparkling welcome drink & warm hospitality sets the tone.</p>
+                </div>
+                <div class="journey-card" style="background:#1e1e1e; color:white;">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Starters</h3>
+                    <p>Three exquisite appetizers to awaken the palate.</p>
+                </div>
+                <div class="journey-card" style="background:#1e1e1e; color:white;">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <h3>Signature Mains</h3>
+                    <p>Choose from chef’s specials – grilled, curried, or vegetarian.</p>
+                </div>
+                <div class="journey-card" style="background:#1e1e1e; color:white;">
+                    <i class="fas fa-cake"></i>
+                    <h3>Sweet Finale</h3>
+                    <p>Decadent desserts crafted to leave a lasting impression.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Food Showcase -->
+    <div class="dark-section" id="showcase">
+        <div class="container">
+            <h2 class="section-title">Signature creations</h2>
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="starter">Starters</button>
+                <button class="filter-btn" data-filter="main">Mains</button>
+                <button class="filter-btn" data-filter="dessert">Desserts</button>
+            </div>
+            <div class="dish-grid" id="dishGrid">
+                <!-- dishes will be populated via js, but static for demo -->
+            </div>
+        </div>
+    </div>
+
+    <!-- What makes special -->
+    <div class="light-section">
+        <div class="container">
+            <h2 class="section-title light-title">Why the ₹999 experience stands apart</h2>
+            <div class="features-grid">
+                <div class="feature-item"><i class="fas fa-tasks"></i><h4>multi‑course ritual</h4><p>every step designed</p></div>
+                <div class="feature-item"><i class="fas fa-carrot"></i><h4>fresh daily</h4><p>ingredients sourced local</p></div>
+                <div class="feature-item"><i class="fas fa-hat-chef"></i><h4>chef’s touch</h4><p>creative recipes</p></div>
+                <div class="feature-item"><i class="fas fa-couch"></i><h4>stylish comfort</h4><p>ambient interiors</p></div>
+                <div class="feature-item"><i class="fas fa-coins"></i><h4>unbeatable value</h4><p>far more than the price</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dining Environment -->
+    <div class="dark-section">
+        <div class="container">
+            <h2 class="section-title">The atmosphere</h2>
+            <div class="env-gallery">
+                <div class="env-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="interior"><div class="env-caption">Intimate lighting</div></div>
+                <div class="env-item"><img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="tables"><div class="env-caption">Elegant table settings</div></div>
+                <div class="env-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="group area"><div class="env-caption">Private dining corners</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guest Experiences -->
+    <div class="light-section">
+        <div class="container">
+            <h2 class="section-title light-title">Guest impressions</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card"><p>"Incredible variety for ₹999 – the kebabs and the dal makhani were outstanding."</p><h4>— Meera S.</h4><span>visited with family</span></div>
+                <div class="testimonial-card"><p>"Every course felt like a chef's tasting menu. The dessert platter is a work of art."</p><h4>— Arjun K.</h4><span>birthday dinner</span></div>
+                <div class="testimonial-card"><p>"Warm service, beautiful ambience, and the value is unreal. I'm a regular now."</p><h4>— Priya R.</h4><span>weekend outing</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Perfect for Every Occasion -->
+    <div class="dark-section">
+        <div class="container">
+            <h2 class="section-title">celebrate any moment</h2>
+            <div class="occasion-grid">
+                <div class="occasion-card"><i class="fas fa-user-friends"></i><h4>friends night</h4></div>
+                <div class="occasion-card"><i class="fas fa-home"></i><h4>family meal</h4></div>
+                <div class="occasion-card"><i class="fas fa-birthday-cake"></i><h4>birthdays</h4></div>
+                <div class="occasion-card"><i class="fas fa-sun"></i><h4>weekend vibe</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Table Reservation -->
+    <div class="light-section" id="reserve">
+        <div class="container">
+            <h2 class="section-title light-title">secure your table</h2>
+            <div class="reservation-form">
+                <form id="reservationForm">
+                    <div class="form-row">
+                        <input type="text" placeholder="Your name" required>
+                        <input type="tel" placeholder="Phone number" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="number" placeholder="Number of guests" min="1" required>
+                        <input type="date" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="time" required>
+                        <input type="text" placeholder="Special requests (optional)">
+                    </div>
+                    <button type="submit" class="btn-submit">Request reservation</button>
+                </form>
+                <p id="resMsg" style="margin-top:20px; color:var(--old-gold);"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location and Contact -->
+    <div class="dark-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">visit or reach out</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p><i class="fas fa-map-pin"></i> 22, Club Road, Andheri West, Mumbai 400053</p>
+                    <p><i class="fas fa-phone-alt"></i> +91 22 6899 0999</p>
+                    <p><i class="fas fa-envelope"></i> concierge@999diningclub.in</p>
+                    <div class="map-placeholder" style="background:#2a2a2a; color:white; border-color:var(--gold);">
+                        <i class="fas fa-map" style="margin-right:10px;"></i> interactive map loading
+                    </div>
+                </div>
+                <div>
+                    <form>
+                        <input type="text" placeholder="Your name" style="margin-bottom:15px;">
+                        <input type="email" placeholder="Email" style="margin-bottom:15px;">
+                        <textarea rows="4" placeholder="Message / special request"></textarea>
+                        <button class="btn-submit" style="margin-top:20px; background:var(--gold);">send message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Dining Moments -->
+    <div class="light-section">
+        <div class="container">
+            <h2 class="section-title light-title">snapshots from the club</h2>
+            <div class="social-grid">
+                <div class="social-item" style="background-image:url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"><i class="fab fa-instagram"></i> @999dining</div>
+                <div class="social-item" style="background-image:url('https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"><i class="fab fa-instagram"></i> @999dining</div>
+                <div class="social-item" style="background-image:url('https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"><i class="fab fa-instagram"></i> @999dining</div>
+                <div class="social-item" style="background-image:url('https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"><i class="fab fa-instagram"></i> @999dining</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <div class="footer-logo">999</div>
+                <p style="color:#aaa; margin:20px 0;">exclusive dining · one price · unlimited satisfaction</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4 style="color:var(--gold);">explore</h4>
+                <a href="#journey">the journey</a>
+                <a href="#showcase">menu</a>
+                <a href="#reserve">reserve</a>
+                <a href="#contact">contact</a>
+            </div>
+            <div class="footer-hours">
+                <h4 style="color:var(--gold);">hours</h4>
+                <p>tue–sun: 6:30pm – 12am</p>
+                <p>monday: closed</p>
+                <p>+91 22 6899 0999</p>
+            </div>
+        </div>
+        <div class="copyright">© 2026 The 999 Dining Club – all rights reserved</div>
+    </footer>
+
+    <!-- interactive & form script -->
+    <script>
+        (function() {
+            // populate dishes
+            const dishes = [
+                { name: 'Truffle Tater Tots', desc: 'Crispy potato with black truffle aioli', ingredients: 'potato, truffle oil, parmesan', cat: 'starter', img: 'https://images.unsplash.com/photo-1586190847861-3aa2f797d9ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+                { name: 'Burrata & Heirloom', desc: 'Creamy burrata with balsamic pearls', ingredients: 'burrata, tomatoes, basil', cat: 'starter', img: 'https://images.unsplash.com/photo-1607532941433-304659e8105a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+                { name: 'Wild Mushroom Risotto', desc: 'Arborio rice, forest mushrooms, parmesan foam', ingredients: 'mushroom, arborio, parmesan', cat: 'main', img: 'https://images.unsplash.com/photo-1633964913295-ceb43826a07f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+                { name: 'Miso Glazed Salmon', desc: 'Salmon with ginger sesame glaze', ingredients: 'salmon, miso, baby bok choy', cat: 'main', img: 'https://images.unsplash.com/photo-1574484288610-7e5b1c0f0e4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+                { name: 'Saffron Panna Cotta', desc: 'Saffron infused cream with pistachio', ingredients: 'cream, saffron, pistachio', cat: 'dessert', img: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' },
+                { name: 'Dark Chocolate Sphere', desc: 'Warm chocolate shell with berry compote', ingredients: 'dark chocolate, berries', cat: 'dessert', img: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' }
+            ];
+
+            const grid = document.getElementById('dishGrid');
+            function renderDishes(filter = 'all') {
+                grid.innerHTML = '';
+                dishes.filter(d => filter === 'all' || d.cat === filter).forEach(d => {
+                    const card = document.createElement('div');
+                    card.className = 'dish-card';
+                    card.innerHTML = `<img src="${d.img}" alt="${d.name}">
+                        <div class="dish-info">
+                            <h4>${d.name}</h4>
+                            <p>${d.desc}</p>
+                            <div class="ingredients">${d.ingredients}</div>
+                        </div>`;
+                    grid.appendChild(card);
+                });
+            }
+            renderDishes('all');
+
+            // filter tabs
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.dataset.filter;
+                    renderDishes(filter);
+                });
+            });
+
+            // reservation form message
+            document.getElementById('reservationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                document.getElementById('resMsg').innerText = '✓ Thank you! Your request has been received. The club will confirm shortly.';
+                this.reset();
+            });
+        })();
+    </script>
+</body>
+</html>
